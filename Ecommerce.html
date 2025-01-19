@@ -20,133 +20,134 @@
                });
             })();
          </script>
- 
+ <style>
 
-    <style>
+ body {
+    font-family: "Roboto", sans-serif;
+    color: #333333; /* Colore testo moderno e leggibile */
+    background-image: url('sfondo infor.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-        body {
-            font-family:"Roboto",serif;
-            color: rgb(0, 0, 0);
-            background-image: url('sfondo infor.jpg'); 
-            background-size: cover; /* L'immagine copre tutta la pagina */
-            background-repeat: no-repeat; /* Evita che l'immagine si ripeta */
-            background-position: center; /* Centra l'immagine */
-        }
-    
+/* Titoli */
 h1 {
     text-overflow: ellipsis;
     text-align: center;
-    background-color: #211ada;
-    font-weight: bolder;
-    font: size 50px;;
-    color:#ffffff;
+    background-color: #4A90E2; /* Blu moderno */
+    font-weight: bold;
+    font-size: 50px; /* Corretto il valore */
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 8px; /* Per un aspetto più morbido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h5{
-    font-family:
+h5 {
     text-overflow: ellipsis;
     text-align: left;
-    background-color: rgb(255, 255, 255);
-    font-weight: bolder;
-    font: size 20px;;
-    color:#000000;
-
+    background-color: #f8f9fa; /* Sfondo chiaro e moderno */
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333;
+    padding: 5px;
+    border-left: 4px solid #4A90E2; /* Aggiunto un accento visivo */
 }
-        
-        table {
-            color: #000000;
-            width: 100%;
-            
-            margin: 20px 0;
-            font-size: 1rem;
-        }
-    
-        th, td {
-            text-overflow: ellipsis;
-           
-            font: size 20px;;
-            color:#000000;
-            font-family:  "Roboto",serif;
-            font-size: medium;
-            text-align: left;
-            padding: 10px; /* Aggiunge spazio interno per una migliore leggibilità */
-            border-bottom: 3px solid #9ed7ff; /* Linee divisorie sottili */
-        }
-    
-        th {
-           font-family:  "Roboto",serif;
-            background-color:#9ed7ff;
-            color: #000000;
-        }
-    
-        img {
-            width: 120px; /* Leggermente più grande */
-            height: auto;
-            border-radius: 12px; /* Curve più morbide */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra sottile */
-        }
-    
-        #car {
-            background-color: #b0c4f3;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra per far risaltare */
-            border: 1px solid #e6e6e6; /* Bordo sottile */
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
 
-            }
+/* Tabelle */
+table {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 1rem;
+    border-collapse: collapse; /* Rimuove spazi tra celle */
+}
 
-            #car img {
-               
-            width: 40px;
-        }
-button info {
+th, td {
+    text-overflow: ellipsis;
+    font-family: "Roboto", sans-serif;
+    font-size: medium;
+    text-align: left;
+    padding: 12px; /* Migliorato il padding */
+    border-bottom: 2px solid #e0e0e0;
+}
+
+th {
+    background-color: #4A90E2;
+    color: #ffffff;
+}
+
+td {
+    background-color: #f8f9fa;
+}
+
+/* Immagini */
+img {
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenitore personalizzato */
+#car {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e6e6e6;
+}
+
+#car img {
+    width: 40px;
+}
+
+/* Pulsanti */
+button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #4A90E2; /* Blu moderno */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #357ABD; /* Colore più scuro al passaggio */
+    transform: translateY(-2px); /* Piccolo effetto di sollevamento */
+}
+
+/* Iframe */
+iframe {
     float: right;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    border: 10px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-    
+
+/* Elenco personalizzato */
+ul.car {
+    background-color: #d9edf7; /* Colore azzurro chiaro */
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    list-style-type: none;
+}
+
 .collection-item {
     display: flex;
     justify-content: space-between;
 }
-
-
-
-
-        button {
-            display: inline-block;
-            margin: 10px 0;
-            background-color: #9ed7ff; /* Colore blu moderno */
-            color: #000000;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-    
-        button:hover {
-            background-color: rgb(133, 187, 245); /* Scuro al passaggio */
-            transform: translateY(-2px); /* Piccolo effetto hover */
-        }
-    
-        iframe {
-            float: right;
-            margin-top: 20px;
-            width: 100%;
-            max-width: 400px;
-            border: 15px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-ul car{
-    background-color: rgb(133, 187, 245);
-}
-
-    </style>
+</style>
     
 <script>
  

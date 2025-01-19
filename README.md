@@ -1,5 +1,6 @@
 # E-commerce 
-![image](https://github.com/user-attachments/assets/6ffe01f6-4ee3-4823-9f1e-62269a44d31a)
+![image](https://github.com/user-attachments/assets/6eb7ced2-de91-4fae-a7bc-448adc22285b)
+
 
 Le tecnologie utilizzate in questo E-commerce sono: 
 

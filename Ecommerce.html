@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Ricambi Stampanti</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+        <script type="text/javascript">
+            (function(){
+               emailjs.init({
+                 publicKey: "Q2CPcwpdsqIXSspiT",
+               });
+            })();
+         </script>
+ 
+
+    <style>
+
+        body {
+            font-family:"Roboto",serif;
+            color: rgb(0, 0, 0);
+            background-image: url('sfondo infor.jpg'); 
+            background-size: cover; /* L'immagine copre tutta la pagina */
+            background-repeat: no-repeat; /* Evita che l'immagine si ripeta */
+            background-position: center; /* Centra l'immagine */
+        }
+    
+h1 {
+    text-overflow: ellipsis;
+    text-align: center;
+    background-color: #211ada;
+    font-weight: bolder;
+    font: size 50px;;
+    color:#ffffff;
+}
+
+h5{
+    font-family:
+    text-overflow: ellipsis;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    font-weight: bolder;
+    font: size 20px;;
+    color:#000000;
+
+}
+        
+        table {
+            color: #000000;
+            width: 100%;
+            
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+    
+        th, td {
+            text-overflow: ellipsis;
+           
+            font: size 20px;;
+            color:#000000;
+            font-family:  "Roboto",serif;
+            font-size: medium;
+            text-align: left;
+            padding: 10px; /* Aggiunge spazio interno per una migliore leggibilità */
+            border-bottom: 3px solid #9ed7ff; /* Linee divisorie sottili */
+        }
+    
+        th {
+           font-family:  "Roboto",serif;
+            background-color:#9ed7ff;
+            color: #000000;
+        }
+    
+        img {
+            width: 120px; /* Leggermente più grande */
+            height: auto;
+            border-radius: 12px; /* Curve più morbide */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra sottile */
+        }
+    
+        #car {
+            background-color: #b0c4f3;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra per far risaltare */
+            border: 1px solid #e6e6e6; /* Bordo sottile */
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+
+            }
+
+            #car img {
+               
+            width: 40px;
+        }
+button info {
+    float: right;
+}
+    
+.collection-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+        button {
+            display: inline-block;
+            margin: 10px 0;
+            background-color: #9ed7ff; /* Colore blu moderno */
+            color: #000000;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+    
+        button:hover {
+            background-color: rgb(133, 187, 245); /* Scuro al passaggio */
+            transform: translateY(-2px); /* Piccolo effetto hover */
+        }
+    
+        iframe {
+            float: right;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+            border: 15px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+ul car{
+    background-color: rgb(133, 187, 245);
+}
+
+    </style>
+    
+<script>
+ 
+ 
+ 
+    class prodotto {
+     
+        constructor(nome, marca, id, url , prezzo) {
+     
+            this.nome = nome
+            this.marca = marca
+            this.id = id
+            this.url = url
+            this.prezzo = prezzo
+        }
+    }
+     
+    class prodottoC {
+     
+        constructor(nome, prezzo, url, qnt) {
+     
+            this.nome = nome
+            this.prezzo = prezzo
+            this.url = url
+            this.qnt = qnt
+        }
+    }
+     
+    window.onload = gestoreLoad
+     
+    function gestoreLoad(){
+     
+     
+     
+    prodotti = []
+    let b1 = new prodotto ("Kit fusore", "Xerox", "109R00772", "https://i.ibb.co/D9x8bSq/fusore.webp", "420.00" )
+    let b2 = new prodotto ("Tamburo", "Xerox", "113R00755", "https://i.ibb.co/whcrhN3/tamburo.jpg", "367.00")
+    let b3 = new prodotto ("ROS Kit", "Xerox", "640S00069", "https://i.ibb.co/NK5wKc2/Ros-xerox.jpg", "283.00")
+    let b4 = new prodotto ("Inverter Decurler Kit", "Xerox", "604K84510", "https://i.ibb.co/fnynjTm/decurler.jpg", "269.00")
+    prodotti.push(b1, b2, b3, b4)
+     
+    let nodoTab = document.getElementById("tab")
+    let listaL = []
+     
+     let nodoInfo = document.getElementById("info")
+nodoInfo.onclick = invia
+ 
+function invia(){
+let message = ""
+    for (let i = 0; i < listaL.length; i++) {
+ 
+     message += "Nome: " + listaL[i].nome + "   "
+     message += "Nella quantità di " + listaL[i].qnt + " pezzi"
+ 
+    }
+ 
+    let mail = document.getElementById("mail").value
+    var templateParams = {
+        from_name: mail,
+  to_name: 'Marco',
+  message: message
+};
+ 
+emailjs.send('service_ktb8lls', 'template_u2kkrdy', templateParams).then(
+  (response) => {
+    console.log('SUCCESS!', response.status, response.text);
+  },
+  (error) => {
+    console.log('FAILED...', error);
+  },
+);
+}
+
+     
+     
+    function rimuoviFigli (nodo) {
+     while (nodo.childNodes.length > 0) {
+     
+     nodo.removeChild(nodo.firstChild);
+     }}
+     
+     
+     
+     
+    function popolaCarrello(){
+     
+        rimuoviFigli(nodoUl)
+        let nodoSomma = document.createElement("h5")
+        let subtotale = 0
+        let totale = 0
+     
+        for (let i = 0; i < listaL.length; i++) {
+            let nodoLi = document.createElement("li")
+            nodoLi.className = "collection-item"
+            subtotale = listaL[i].qnt * listaL[i].prezzo
+            nodoLi.textContent = listaL[i].nome + " Qnt: " + listaL[i].qnt 
+            let nodoBr = document.createElement("br")
+            nodoLi.appendChild(nodoBr)
+           // let nodoLi2 = document.createElement("li")
+           // nodoLi2.className = "collection-item"
+            let nodoImmagine = document.createElement("img")
+            let nodoSel = document.createElement("td")
+            nodoImmagine.src = listaL[i].url
+            nodoLi.appendChild(nodoImmagine)
+            let nodoLi1 = document.createElement("li")
+            nodoLi1.className = "collection-item"
+            nodoLi1.textContent = "Subtotale: "  + subtotale + " euro"
+            totale += subtotale
+            nodoUl.appendChild(nodoLi)
+           // nodoUl.appendChild(nodoLi2)
+            nodoUl.appendChild(nodoLi1)
+        }
+     
+        nodoSomma.textContent  = ("Il totale da pagare è: " + totale + " euro")
+        nodoUl.appendChild(nodoSomma)
+    }
+     
+     
+     
+     
+    function popolaTabella() {
+     
+        rimuoviFigli(nodoTab)
+     
+        for (let i = 0; i < prodotti.length; i++){
+     
+            let nodoTr = document.createElement("tr")
+            let nodoPos = document.createElement("td")
+            nodoPos.textContent = i+1
+            let nodoNome = document.createElement("td")
+            nodoNome.textContent = prodotti[i].nome
+            let nodoMarca = document.createElement("td")
+            nodoMarca.textContent = prodotti[i].marca
+            let nodoId = document.createElement("td")
+            nodoId.textContent = prodotti[i].id
+            let nodoPrezzo = document.createElement("td")
+            nodoPrezzo.textContent = prodotti[i].prezzo
+            let nodoImg = document.createElement("td")
+            let img = document.createElement("img")
+            let nodoSel = document.createElement("td")
+            // per ogni elemento della lista aggiungiamo nella colonna Sel un input di tipo number
+            // con valore 0 questo in put ha un id che è assegnato in maniera dinamica
+            // questo ci servirà per recuperarli in un secondo momento
+            let nodoInput = document.createElement("input")
+            nodoInput.type = "number"
+            nodoInput.value = "0"
+            nodoInput.id = prodotti[i].nome
+            // creiamo un bottone
+            let nodoBott = document.createElement("button")
+            nodoBott.textContent = "+"
+             let nodoBott1 = document.createElement("button")
+            nodoBott1.textContent = "Rimuovi"
+            nodoBott1.onclick = function remove(){
+     
+            
+     
+            for(let j = 0; j < listaL.length; j++) {
+     
+                if (listaL[j].nome == prodotti[i].nome){
+                listaL.splice(j, 1) }
+            }
+     
+     
+     
+    popolaCarrello()
+     
+    }
+     
+     
+     
+    nodoBott.onclick = function add(){
+        // creiamo un nuovo libroC con le informazioni del libro
+        let p1 = new prodottoC(prodotti[i].nome, prodotti[i].prezzo, prodotti[i].url, document.getElementById(prodotti[i].nome).value)
+     
+        // se il valore dell'input è maggiore di zero allora va aggiunto al carrello
+        if ((document.getElementById(prodotti[i].nome).value) > 0) {
+     
+            
+            // se la lista èa cnora vuota devi solo aggiungere alla lista il libro
+            if (listaL.length == 0) {
+     
+                listaL.push(p1)
+                
+            }
+     
+            // altrimenti se il libro è già presente nel carrello devi cambiare solo la quanità
+            else {
+                let nuovo = true
+                let indice = -1
+     
+                for (let j = 0; j < listaL.length; j++) {
+     
+                    if (listaL[j].nome == p1.nome) {
+     
+                        listaL[j].qnt = p1.qnt
+                        nuovo = false
+                       
+                    }
+                }
+     
+                if (nuovo) {
+     
+                    listaL.push(p1)
+                    
+                }
+            }   
+        }
+     
+                if ((document.getElementById(prodotti[i].nome).value) == 0) {
+                       
+                    for (let k = 0; k < listaL.length; k++) {
+     
+                        if (p1.nome == listaL[k].nome) {
+     
+                            listaL.splice(k, 1)
+                        }
+     
+     
+                }}
+     
+        popolaCarrello()
+     
+    }
+     
+     
+        nodoSel.appendChild(nodoInput)
+        nodoSel.appendChild(nodoBott)
+        nodoSel.appendChild(nodoBott1)
+        img.src = prodotti[i].url
+        nodoImg.appendChild(img)
+        nodoTr.appendChild(nodoNome)
+        nodoTr.appendChild(nodoMarca)
+        nodoTr.appendChild(nodoId)
+        nodoTr.appendChild(nodoPrezzo)
+        nodoTr.appendChild(nodoImg)
+        nodoTr.appendChild(nodoSel)
+        nodoTab.appendChild(nodoTr)
+     
+     
+    }}
+     
+    let nodoUl = document.getElementById("carrello")
+     
+     
+     
+    popolaTabella()
+     
+     
+     
+     
+     
+    }
+        </script>
+    </head>
+
+
+
+
+<body>
+
+
+
+
+    <div class="container">
+        <h1>Electronic Store</h1>
+
+        <!-- Carrello -->
+        <div id="car" class="card">
+            <h5>Richiedi informazioni per la consegna</h5>
+            <input type = "text" id = "mail" placeholder="inserisci qui la tua mail"><br>
+            <button id = "info">informazioni</button>
+        
+
+            <ul id="carrello" class="collection">
+                <li class="collection-header"><h5>Il tuo carrello:</h5></li>
+            </ul>
+        </div>
+
+        <!-- Tabella ricambi -->
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>SN</th>
+                    <th>Prezzo (€)</th>
+                    <th>Immagine </th>
+                    <th>Azione</th>
+                </tr>
+            </thead>
+            <tbody id="tab"></tbody>
+        </table>
+
+     
+    
+        <!-- Video -->
+        
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RlvVz2xXmPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3fLHL0E-XcQ?si=zlWZ9to70F6wIwWV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+</div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
